@@ -1,0 +1,9 @@
+# unet
+https://huggingface.co/ericmieth/Wan2.1-VACE-14B-GGUF/resolve/main/Wan2.1-VACE-14B-Qx_x_x.gguf ComfyUI/models/unet/Wan2.1-VACE-14B-Qx_x_x.gguf
+
+# vae
+https://huggingface.co/ericmieth/Wan2.1-VACE-14B-GGUF/resolve/main/wan_2.1_vae.safetensors ComfyUI/models/unet/wan_2.1_vae.safetensors
+
+# text_encoders
+https://huggingface.co/TheBloke/umt5-xxl-GGUF/resolve/main/umt5_xxl_fp16.safetensors ComfyUI/models/text_encoders/umt5_xxl_fp16.safetensors
+# ...etc...
