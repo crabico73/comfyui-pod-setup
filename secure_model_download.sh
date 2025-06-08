@@ -40,4 +40,4 @@ while IFS= read -r line || [[ -n "$line" ]]; do
     fi
 done < "$MODELS_FILE"
 
-echo "✅ All models processed."
+echo "✅ All requested models processed."
