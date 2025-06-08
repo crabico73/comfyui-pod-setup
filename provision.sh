@@ -31,15 +31,25 @@ git clone https://github.com/comfyanonymous/ComfyUI_IPAdapter_plus.git || echo "
 # 4. Ensure models folder exists
 mkdir -p /workspace/ComfyUI/models/checkpoints
 
-# (Optional) Example placeholder for downloading a model
-# cd /workspace/ComfyUI/models/checkpoints
-# wget -O example_model.safetensors https://your-model-url-here.safetensors
-
 # 5. Download the user's workflow
 mkdir -p /workspace/ComfyUI/workflows
 wget https://raw.githubusercontent.com/crabico73/comfyui-pod-setup/main/vace_v2v_example_workflow.json -O /workspace/ComfyUI/workflows/vace_v2v_example_workflow.json
 
-# 6. Final message
+# 6. Download models from models.txt
+echo "⬇️ Downloading models listed in models.txt..."
+MODEL_LIST_URL="https://raw.githubusercontent.com/crabico73/comfyui-pod-setup/main/models.txt"
+MODEL_LIST_TMP="/tmp/models.txt"
+
+wget -O "$MODEL_LIST_TMP" "$MODEL_LIST_URL"
+
+while read -r url path; do
+    # Skip empty lines and comments
+    [[ -z "$url" || "$url" =~ ^# ]] && continue
+    mkdir -p "$(dirname "/workspace/$path")"
+    wget -O "/workspace/$path" "$url"
+done < "$MODEL_LIST_TMP"
+
+# 7. Final message
 echo "✅ Provisioning complete. Ready to launch ComfyUI."
 
 # Optional: auto-launch ComfyUI (commented out for now)
